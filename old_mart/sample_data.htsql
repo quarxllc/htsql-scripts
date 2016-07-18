@@ -1,0 +1,13 @@
+/sample_type
+    {
+        code := code,
+        title := title,
+    }/:rexdb/:merge
+
+# Sample
+/sample
+    {
+        sample_type:=sample_type.id(),
+        individual:=individual.code,
+        code
+    }:as sample/:rexdb/:merge

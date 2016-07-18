@@ -1,0 +1,47 @@
+# Measure Annotations
+/measure_annotation
+    {
+        # This first column looks complicated, but what it's doing is re-assembling
+        # the primary key of the associated Measure in the format that the Assessment
+        # table expects.
+        #   Study's measure PK looks like: INDIVIDUAL.(MEASURETYPE.REVISION).MEASURECODE
+        #   Our Assessment PK looks like: INDIVIDUAL.'INDIVIDUAL.(MEASURETYPE.REVISION).MEASURECODE'
+        id(
+            measure.individual.code,
+            measure.individual.code + '.(' + measure.measure_type_revision.measure_type.code + '.' + string(measure.measure_type_revision.revision) + ').' + string(measure.code)
+        ) :as contact_info_form,
+
+        user:=user.id(),
+        code,
+        measure_annotation_score:=measure_annotation_score.id(),
+        datetime,
+        memo
+    }
+    .filter(
+        measure.measure_type_revision.measure_type='contact-info-form'
+    )
+    :as contact_info_form_annotation/:rexdb/:insert
+
+# Measure Annotation Comments
+/measure_annotation_comment
+    {
+        # This first column is even more complicated, because it's assmbling
+        # the primary key of the previous table so that we can link to it in this
+        # table. It looks like:
+        #   (INDIVIDUAL.'INDIVIDUAL.(MEASURETYPE.REVISION).MEASURECODE').USER.ANNOTATIONCODE
+        id(
+            id(
+                measure_annotation.measure.individual.code,
+                measure_annotation.measure.individual.code + '.(' + measure_annotation.measure.measure_type_revision.measure_type.code + '.' + string(measure_annotation.measure.measure_type_revision.revision) + ').' + string(measure_annotation.measure.code)
+            ),
+            measure_annotation.user.remote_user,
+            measure_annotation.code
+        ) :as contact_info_form_annotation,
+
+        measure_annotation_comment_type:=measure_annotation_comment_type.id()
+    }
+    .filter(
+        measure_annotation.measure.measure_type_revision.measure_type='contact-info-form'
+    )
+    :as contact_info_form_annotation_comment/:rexdb/:insert
+

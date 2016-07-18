@@ -1,0 +1,10 @@
+- table: consent 
+  with: 
+  - column: individual
+    type: text
+  - column: has_informed_consent
+    type: text
+  - column: enrollment_date
+    type: text
+  - column: date_modified
+    type: datetime

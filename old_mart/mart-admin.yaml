@@ -1,0 +1,844 @@
+paths:
+
+  /system-admin/mart-admin:
+    action:
+      type: wizard
+      title: Explore RexMarts
+
+      path:
+        - choose-definition:
+          - choose-mart:
+            - view-mart:
+            - console:
+            - guide-autism-intro:
+              - repeat:
+                - guide-autism-columns:
+                - guide-autism-filters:
+                then:
+                - console:
+                - guide-autism-export:
+            - guide-autism-measure-intro:
+              - repeat:
+                - guide-autism-measure-columns:
+                - guide-autism-measure-filters:
+                then:
+                - console:
+                - guide-autism-measure-export:
+            - guide-autism-sample-intro:
+              - repeat:
+                - guide-autism-sample-columns:
+                then:
+                - console:
+                - guide-autism-sample-export:
+            - guide-autism-tube-intro:
+              - repeat:
+                - guide-autism-tube-columns:
+                then:
+                - console:
+                - guide-autism-tube-export:
+            - guide-ptsd-intro:
+              - repeat:
+                - guide-ptsd-columns:
+                - guide-ptsd-filters:
+                then:
+                - console:
+                - guide-ptsd-export:
+            - guide-ptsd-measure-intro:
+              - repeat:
+                - guide-ptsd-measure-columns:
+                - guide-ptsd-measure-filters:
+                then:
+                - console:
+                - guide-ptsd-measure-export:
+            - guide-ptsd-sample-intro:
+              - repeat:
+                - guide-ptsd-sample-columns:
+                then:
+                - console:
+                - guide-ptsd-sample-export:
+            - guide-ptsd-tube-intro:
+              - repeat:
+                - guide-ptsd-tube-columns:
+                then:
+                - console:
+                - guide-ptsd-tube-export:
+            - guide-cancer-intro:
+              - repeat:
+                - guide-cancer-columns:
+                - guide-cancer-filters:
+                then:
+                - console:
+                - guide-cancer-export:
+            - guide-cancer-measure-intro:
+              - repeat:
+                - guide-cancer-measure-columns:
+                - guide-cancer-measure-filters:
+                then:
+                - console:
+                - guide-cancer-measure-export:
+            - guide-cancer-sample-intro:
+              - repeat:
+                - guide-cancer-sample-columns:
+                then:
+                - console:
+                - guide-cancer-sample-export:
+            - guide-cancer-tube-intro:
+              - repeat:
+                - guide-cancer-tube-columns:
+                then:
+                - console:
+                - guide-cancer-tube-export:
+            - guide-drugs-intro:
+              - repeat:
+                - guide-drugs-columns:
+                - guide-drugs-filters:
+                then:
+                - console:
+                - guide-drugs-export:
+            - guide-drugs-measure-intro:
+              - repeat:
+                - guide-drugs-measure-columns:
+                - guide-drugs-measure-filters:
+                then:
+                - console:
+                - guide-drugs-measure-export:
+            - guide-drugs-sample-intro:
+              - repeat:
+                - guide-drugs-sample-columns:
+                then:
+                - console:
+                - guide-drugs-sample-export:
+            - guide-drugs-tube-intro:
+              - repeat:
+                - guide-drugs-tube-columns:
+                then:
+                - console:
+                - guide-drugs-tube-export:
+            - guide-satisfaction-intro:
+              - repeat:
+                - guide-satisfaction-columns:
+                - guide-satisfaction-filters:
+                then:
+                - console:
+                - guide-satisfaction-export:
+            - guide-satisfaction-measure-intro:
+              - repeat:
+                - guide-satisfaction-measure-columns:
+                - guide-satisfaction-measure-filters:
+                then:
+                - console:
+                - guide-satisfaction-measure-export:
+            - guide-satisfaction-sample-intro:
+              - repeat:
+                - guide-satisfaction-sample-columns:
+                then:
+                - console:
+                - guide-satisfaction-sample-export:
+            - guide-satisfaction-tube-intro:
+              - repeat:
+                - guide-satisfaction-tube-columns:
+                then:
+                - console:
+                - guide-satisfaction-tube-export:
+            - guide-autism-x-satisfaction-intro:
+              - repeat:
+                - guide-autism-x-satisfaction-columns:
+                - guide-autism-x-satisfaction-filters:
+                then:
+                - console:
+                - guide-autism-x-satisfaction-export:
+            - guide-autism-x-satisfaction-measure-intro:
+              - repeat:
+                - guide-autism-x-satisfaction-measure-columns:
+                - guide-autism-x-satisfaction-measure-filters:
+                then:
+                - console:
+                - guide-autism-x-satisfaction-measure-export:
+            - guide-autism-x-satisfaction-sample-intro:
+              - repeat:
+                - guide-autism-x-satisfaction-sample-columns:
+                then:
+                - console:
+                - guide-autism-x-satisfaction-sample-export:
+            - guide-autism-x-satisfaction-tube-intro:
+              - repeat:
+                - guide-autism-x-satisfaction-tube-columns:
+                then:
+                - console:
+                - guide-autism-x-satisfaction-tube-export:
+            - dictionary:
+              - dictionary-browse-by-table:
+                - dictionary-browse-table-columns:
+                  - dictionary-view-column:
+                  - dictionary-browse-column-enumerations:
+                - dictionary-view-table:
+              - dictionary-browse-by-column:
+                - dictionary-view-column:
+                - dictionary-browse-column-enumerations:
+          - view-definition:
+
+
+      actions:
+
+        console:
+          type: mart-htsql-console
+          title: HTSQL Console
+
+        guide-autism-intro:
+          type: mart-guide
+          title: Explore Autism and Participant Details
+          definition: autism
+
+        guide-autism-filters:
+          type: mart-guide-filter
+          title: Filter Autism and Participant Todos
+          definition: autism
+          table: todo
+
+          filters:
+          - title: Todo Title
+            expression: title
+          - title: Not Started To-Dos
+            expression: status=='not-started'
+          - title: Individual Code
+            expression: individual.code
+
+        guide-autism-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: autism
+          table: todo
+
+        guide-autism-export:
+          type: mart-guide-export
+          definition: autism
+          table: todo
+        
+        guide-autism-measure-intro:
+          type: mart-guide
+          title: Explore Autism Measure
+          definition: autism
+
+        guide-autism-measure-filters:
+          type: mart-guide-filter
+          title: Filter Autism Measures
+          definition: autism
+          table: measure
+
+          filters:
+          - title: Date of Evaluation
+            expression: date_of_evaluation
+          - title: Age at Evaluation
+            expression: age_at_evaluation
+
+        guide-autism-measure-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: autism
+          table: measure
+
+        guide-autism-measure-export:
+          type: mart-guide-export
+          definition: autism
+          table: measure
+
+        guide-autism-sample-intro:
+          type: mart-guide
+          title: Explore Autism sample
+          definition: autism
+
+        #guide-autism-sample-filters:
+        #  type: mart-guide-filter
+        #  title: Filter Autism samples
+        #  definition: autism
+        #  table: sample
+
+        guide-autism-sample-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: autism
+          table: sample
+
+        guide-autism-sample-export:
+          type: mart-guide-export
+          definition: autism
+          table: sample
+
+        guide-autism-tube-intro:
+          type: mart-guide
+          title: Explore Autism tube
+          definition: autism
+
+        #guide-autism-tube-filters:
+        #  type: mart-guide-filter
+        #  title: Filter Autism tubes
+        #  definition: autism
+        #  table: tube
+
+        guide-autism-tube-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: autism
+          table: tube
+
+        guide-autism-tube-export:
+          type: mart-guide-export
+          definition: autism
+          table: tube
+
+        guide-ptsd-intro:
+          type: mart-guide
+          title: Explore ptsd and Participant Details
+          definition: ptsd
+
+        guide-ptsd-filters:
+          type: mart-guide-filter
+          title: Filter ptsd and Participant Todos
+          definition: ptsd
+          table: todo
+
+          filters:
+          - title: Todo Title
+            expression: title
+          - title: Not Started To-Dos
+            expression: status=='not-started'
+          - title: Individual Code
+            expression: individual.code
+
+        guide-ptsd-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: ptsd
+          table: todo
+
+        guide-ptsd-export:
+          type: mart-guide-export
+          definition: ptsd
+          table: todo
+        
+        guide-ptsd-measure-intro:
+          type: mart-guide
+          title: Explore PTSD Measure
+          definition: ptsd
+
+        guide-ptsd-measure-filters:
+          type: mart-guide-filter
+          title: Filter ptsd Measures
+          definition: ptsd
+          table: measure
+
+          filters:
+          - title: Date of Evaluation
+            expression: date_of_evaluation
+          - title: Age at Evaluation
+            expression: age_at_evaluation
+
+        guide-ptsd-measure-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: ptsd
+          table: measure
+
+        guide-ptsd-measure-export:
+          type: mart-guide-export
+          definition: ptsd
+          table: measure
+
+        guide-ptsd-sample-intro:
+          type: mart-guide
+          title: Explore ptsd sample
+          definition: ptsd
+
+        #guide-ptsd-sample-filters:
+        #  type: mart-guide-filter
+        #  title: Filter ptsd samples
+        #  definition: ptsd
+        #  table: sample
+
+        guide-ptsd-sample-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: ptsd
+          table: sample
+
+        guide-ptsd-sample-export:
+          type: mart-guide-export
+          definition: ptsd
+          table: sample
+
+        guide-ptsd-tube-intro:
+          type: mart-guide
+          title: Explore ptsd tube
+          definition: ptsd
+
+        #guide-ptsd-tube-filters:
+        #  type: mart-guide-filter
+        #  title: Filter ptsd tubes
+        #  definition: ptsd
+        #  table: tube
+
+        guide-ptsd-tube-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: ptsd
+          table: tube
+
+        guide-ptsd-tube-export:
+          type: mart-guide-export
+          definition: ptsd
+          table: tube
+# Cancer
+        guide-cancer-intro:
+          type: mart-guide
+          title: Explore cancer and Participant Details
+          definition: cancer
+
+        guide-cancer-filters:
+          type: mart-guide-filter
+          title: Filter cancer and Participant Todos
+          definition: cancer
+          table: todo
+
+          filters:
+          - title: Todo Title
+            expression: title
+          - title: Not Started To-Dos
+            expression: status=='not-started'
+          - title: Individual Code
+            expression: individual.code
+
+        guide-cancer-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: cancer
+          table: todo
+
+        guide-cancer-export:
+          type: mart-guide-export
+          definition: cancer
+          table: todo
+        
+        guide-cancer-measure-intro:
+          type: mart-guide
+          title: Explore cancer Measure
+          definition: cancer
+
+        guide-cancer-measure-filters:
+          type: mart-guide-filter
+          title: Filter cancer Measures
+          definition: cancer
+          table: measure
+
+          filters:
+          - title: Date of Evaluation
+            expression: date_of_evaluation
+          - title: Age at Evaluation
+            expression: age_at_evaluation
+
+        guide-cancer-measure-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: cancer
+          table: measure
+
+        guide-cancer-measure-export:
+          type: mart-guide-export
+          definition: cancer
+          table: measure
+
+        guide-cancer-sample-intro:
+          type: mart-guide
+          title: Explore cancer sample
+          definition: cancer
+
+        #guide-cancer-sample-filters:
+        #  type: mart-guide-filter
+        #  title: Filter cancer samples
+        #  definition: cancer
+        #  table: sample
+
+        guide-cancer-sample-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: cancer
+          table: sample
+
+        guide-cancer-sample-export:
+          type: mart-guide-export
+          definition: cancer
+          table: sample
+
+        guide-cancer-tube-intro:
+          type: mart-guide
+          title: Explore cancer tube
+          definition: cancer
+
+        #guide-cancer-tube-filters:
+        #  type: mart-guide-filter
+        #  title: Filter cancer tubes
+        #  definition: cancer
+        #  table: tube
+
+        guide-cancer-tube-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: cancer
+          table: tube
+
+        guide-cancer-tube-export:
+          type: mart-guide-export
+          definition: cancer
+          table: tube
+#Drugs
+        guide-drugs-intro:
+          type: mart-guide
+          title: Explore drugs and Participant Details
+          definition: drugs
+
+        guide-drugs-filters:
+          type: mart-guide-filter
+          title: Filter drugs and Participant Todos
+          definition: drugs
+          table: todo
+
+          filters:
+          - title: Todo Title
+            expression: title
+          - title: Not Started To-Dos
+            expression: status=='not-started'
+          - title: Individual Code
+            expression: individual.code
+
+        guide-drugs-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: drugs
+          table: todo
+
+        guide-drugs-export:
+          type: mart-guide-export
+          definition: drugs
+          table: todo
+        
+        guide-drugs-measure-intro:
+          type: mart-guide
+          title: Explore drugs Measure
+          definition: drugs
+
+        guide-drugs-measure-filters:
+          type: mart-guide-filter
+          title: Filter drugs Measures
+          definition: drugs
+          table: measure
+
+          filters:
+          - title: Date of Evaluation
+            expression: date_of_evaluation
+          - title: Age at Evaluation
+            expression: age_at_evaluation
+
+        guide-drugs-measure-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: drugs
+          table: measure
+
+        guide-drugs-measure-export:
+          type: mart-guide-export
+          definition: drugs
+          table: measure
+
+        guide-drugs-sample-intro:
+          type: mart-guide
+          title: Explore drugs sample
+          definition: drugs
+
+        #guide-drugs-sample-filters:
+        #  type: mart-guide-filter
+        #  title: Filter drugs samples
+        #  definition: drugs
+        #  table: sample
+
+        guide-drugs-sample-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: drugs
+          table: sample
+
+        guide-drugs-sample-export:
+          type: mart-guide-export
+          definition: drugs
+          table: sample
+
+        guide-drugs-tube-intro:
+          type: mart-guide
+          title: Explore drugs tube
+          definition: drugs
+
+        #guide-drugs-tube-filters:
+        #  type: mart-guide-filter
+        #  title: Filter drugs tubes
+        #  definition: drugs
+        #  table: tube
+
+        guide-drugs-tube-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: drugs
+          table: tube
+
+        guide-drugs-tube-export:
+          type: mart-guide-export
+          definition: drugs
+          table: tube
+
+#Satisfaction 
+        guide-satisfaction-intro:
+          type: mart-guide
+          title: Explore satisfaction and Participant Details
+          definition: satisfaction
+
+        guide-satisfaction-filters:
+          type: mart-guide-filter
+          title: Filter satisfaction and Participant Todos
+          definition: satisfaction
+          table: todo
+
+          filters:
+          - title: Todo Title
+            expression: title
+          - title: Not Started To-Dos
+            expression: status=='not-started'
+          - title: Individual Code
+            expression: individual.code
+
+        guide-satisfaction-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: satisfaction
+          table: todo
+
+        guide-satisfaction-export:
+          type: mart-guide-export
+          definition: satisfaction
+          table: todo
+        
+        guide-satisfaction-measure-intro:
+          type: mart-guide
+          title: Explore satisfaction Measure
+          definition: satisfaction
+
+        guide-satisfaction-measure-filters:
+          type: mart-guide-filter
+          title: Filter satisfaction Measures
+          definition: satisfaction
+          table: measure
+
+          filters:
+          - title: Date of Evaluation
+            expression: date_of_evaluation
+          - title: Age at Evaluation
+            expression: age_at_evaluation
+
+        guide-satisfaction-measure-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: satisfaction
+          table: measure
+
+        guide-satisfaction-measure-export:
+          type: mart-guide-export
+          definition: satisfaction
+          table: measure
+
+        guide-satisfaction-sample-intro:
+          type: mart-guide
+          title: Explore satisfaction sample
+          definition: satisfaction
+
+        #guide-satisfaction-sample-filters:
+        #  type: mart-guide-filter
+        #  title: Filter satisfaction samples
+        #  definition: satisfaction
+        #  table: sample
+
+        guide-satisfaction-sample-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: satisfaction
+          table: sample
+
+        guide-satisfaction-sample-export:
+          type: mart-guide-export
+          definition: satisfaction
+          table: sample
+
+        guide-satisfaction-tube-intro:
+          type: mart-guide
+          title: Explore satisfaction tube
+          definition: satisfaction
+
+        #guide-satisfaction-tube-filters:
+        #  type: mart-guide-filter
+        #  title: Filter satisfaction tubes
+        #  definition: satisfaction
+        #  table: tube
+
+        guide-satisfaction-tube-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: satisfaction
+          table: tube
+
+        guide-satisfaction-tube-export:
+          type: mart-guide-export
+          definition: satisfaction
+          table: tube
+
+#autism-x-satisfaction 
+        guide-autism-x-satisfaction-intro:
+          type: mart-guide
+          title: Explore autism-x-satisfaction and Participant Details
+          definition: autism_x_satisfaction
+
+        guide-autism-x-satisfaction-filters:
+          type: mart-guide-filter
+          title: Filter Autism and Satisfaction and Participant Todos
+          definition: autism_x_satisfaction
+          table: todo
+
+          filters:
+          - title: Todo Title
+            expression: title
+          - title: Not Started To-Dos
+            expression: status=='not-started'
+          - title: Individual Code
+            expression: individual.code
+
+        guide-autism-x-satisfaction-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: autism_x_satisfaction
+          table: todo
+
+        guide-autism-x-satisfaction-export:
+          type: mart-guide-export
+          definition: autism_x_satisfaction
+          table: todo
+        
+        guide-autism-x-satisfaction-measure-intro:
+          type: mart-guide
+          title: Explore autism-x-satisfaction Measure
+          definition: autism_x_satisfaction
+
+        guide-autism-x-satisfaction-measure-filters:
+          type: mart-guide-filter
+          title: Filter autism-x-satisfaction Measures
+          definition: autism_x_satisfaction
+          table: measure
+
+          filters:
+          - title: Date of Evaluation
+            expression: date_of_evaluation
+          - title: Age at Evaluation
+            expression: age_at_evaluation
+
+        guide-autism-x-satisfaction-measure-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: autism_x_satisfaction
+          table: measure
+
+        guide-autism-x-satisfaction-measure-export:
+          type: mart-guide-export
+          definition: autism_x_satisfaction
+          table: measure
+
+        guide-autism-x-satisfaction-sample-intro:
+          type: mart-guide
+          title: Explore autism_x_satisfaction sample
+          definition: autism_x_satisfaction
+
+        #guide-autism-x-satisfaction-sample-filters:
+        #  type: mart-guide-filter
+        #  title: Filter autism-x-satisfaction samples
+        #  definition: autism-x-satisfaction
+        #  table: sample
+
+        guide-autism-x-satisfaction-sample-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: autism_x_satisfaction
+          table: sample
+
+        guide-autism-x-satisfaction-sample-export:
+          type: mart-guide-export
+          definition: autism_x_satisfaction
+          table: sample
+
+        guide-autism-x-satisfaction-tube-intro:
+          type: mart-guide
+          title: Explore autism-x-satisfaction tube
+          definition: autism_x_satisfaction
+
+        #guide-autism-x-satisfaction-tube-filters:
+        #  type: mart-guide-filter
+        #  title: Filter autism-x-satisfaction tubes
+        #  definition: autism-x-satisfaction
+        #  table: tube
+
+        guide-autism-x-satisfaction-tube-columns:
+          type: mart-guide-columns
+          title: Choose Columns
+          definition: autism_x_satisfaction
+          table: tube
+
+        guide-autism-x-satisfaction-tube-export:
+          type: mart-guide-export
+          definition: autism_x_satisfaction
+          table: tube
+
+
+        choose-mart:
+          type: mart-pick
+          title: Choose a Mart
+
+        view-mart:
+          type: mart-details
+          title: Mart Details
+
+        choose-definition:
+          type: mart-definition-pick
+          title: Choose a Type of Mart to Explore
+
+        view-definition:
+          type: mart-definition-details
+          title: Definition Details
+
+        dictionary:
+          type: mart-dictionary
+
+        dictionary-browse-by-table:
+          type: mart-dictionary-tables
+          title: Browse Tables
+
+        dictionary-browse-table-columns:
+          type: mart-dictionary-table-columns
+          title: Table Columns
+
+        dictionary-browse-by-column:
+          type: mart-dictionary-columns
+          title: Browse Columns
+
+        dictionary-view-table:
+          type: mart-dictionary-table-details
+          title: Table Details
+
+        dictionary-view-column:
+          type: mart-dictionary-column-details
+          title: Column Details
+
+        dictionary-browse-column-enumerations:
+          type: mart-dictionary-enumerations
+          title: Column Enumerations
+

@@ -1,0 +1,14 @@
+- table: partient_data
+  with:
+  - column: individual
+    type: text
+  - column: measure_type_revision
+    type: text
+  - column: date_of_evaluation
+    type: datetime
+  - column: sample_type
+    type: text
+    required: false
+  - column: date_collected
+    type: datetime
+    required: false

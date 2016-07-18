@@ -1,0 +1,9 @@
+/measure{
+        id() :as assessment_uid,
+        individual.id() :as individual,
+        date_of_evaluation,
+        age_at_evaluation
+    }.filter(
+        measure_type_revision.measure_type=$INSTRUMENT
+        & study=$study
+    )/:rexdb

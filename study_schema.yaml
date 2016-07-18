@@ -1,0 +1,51 @@
+- table: visit
+  with:
+    - column: visit_one
+      type: text
+    - column: visit_two
+      type: text
+    - column: visit_three
+      type: text
+
+- table: patient_data
+  with:
+  - column: individual
+    type: text
+  - column: measure_type_revision
+    type: text
+  - column: date_of_evaluation
+    type: datetime
+  - column: sample_type
+    type: text
+    required: false
+  - column: date_collected
+    type: datetime
+    required: false
+
+- table: measure_annotation
+  with:
+  - column: individual
+    type: text
+  - column: score
+    type: integer
+    required: false
+  - column: datetime
+    type: datetime
+    required: false
+  - column: angertime
+    type: text
+    required: false
+
+- table: consent
+  with:
+  - column: individual
+    type: text
+  - column: has_informed_consent
+    type: text
+    required: false
+  - column: enrollment_date
+    type: text
+    required: false
+  - column: date_modified
+    type: datetime
+    required: false

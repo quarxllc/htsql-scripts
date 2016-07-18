@@ -1,0 +1,17 @@
+/individual.measure
+
+        .filter(measure_type_revision.measure_type='pediatric-anger')
+            
+            .measure_annotation
+        
+        .filter(int(measure_annotation_score.code)>3){
+
+            measure.individual: as individual,
+            measure_annotation_score: as score,
+            datetime: as datetime,
+            if(int(measure_annotation_score.code)=4,'always','sometimes'): as angertime
+        
+            }
+            :as measure_annotation
+            /: rexdb
+            /: merge

@@ -1,0 +1,10 @@
+- table: measure_annotation
+  with: 
+  - column: individual
+    type: text
+  - column: score
+    type: integer
+  - column: datetime
+    type: datetime
+  - column: angertime
+    type: text

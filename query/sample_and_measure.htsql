@@ -1,0 +1,12 @@
+/individual{
+
+        top(measure.individual): as individual,
+        top(measure.sort(date_of_evaluation).filter(measure_type_revision.measure_type='ace-med-hx')){measure_type_revision}: as measure_type_revision,
+        top(measure.sort(date_of_evaluation).filter(measure_type_revision.measure_type='ace-med-hx')){date_of_evaluation}: as date_of_evaluation,
+        top(sample){sample_type}: as sample_type,
+        top(sample)date_collected}: as date_collected
+    
+        }
+        : as patient_data
+        /: rexdb
+        /: merge

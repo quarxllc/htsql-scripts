@@ -1,0 +1,9 @@
+/measure?study='ptsd'{
+        individual := individual.id(),
+        study := study.id(),
+        measure_type_revision := measure_type_revision.measure_type.code,
+        code,
+        date_of_evaluation,
+        age_at_evaluation,
+        data_entry_status
+    }/:rexdb/:merge

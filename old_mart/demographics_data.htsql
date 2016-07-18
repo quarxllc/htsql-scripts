@@ -1,0 +1,29 @@
+# Individuals
+/individual
+    {
+        code,
+        sex
+    }/:rexdb/:insert
+
+# Update Individuals to notate parents
+/individual
+    {
+        id(),
+        mother:=mother.id(),
+        father:=father.id()
+    }
+    /:rexdb/:update
+
+# Individual identities
+/identity{
+        individual:=individual.id(),
+        givenname,
+        middle,
+        surname,
+        birthdate,
+        deathdate,
+        notes
+    }
+    /:rexdb/:insert
+
+

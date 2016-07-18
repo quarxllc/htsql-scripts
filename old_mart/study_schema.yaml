@@ -1,0 +1,110 @@
+- table: study
+  with:
+  - column: code
+    type: text
+  - identity: [code]
+  - column: title
+    type: text
+    required: false
+
+- table: study_version
+  with:
+  - link: study
+  - column: version
+    type: integer
+  - column: note
+    type: text
+  - identity: [study, version]
+
+- table: individual
+  with:
+  - column: code
+    type: text
+  - identity: [code]
+  - column: sex
+    type: [not-known, male, female, not-applicable]
+
+- table: study_enrollment
+  with:
+  - link: study_version
+  - link: individual
+  - column: code
+    type: integer
+  - identity: [study_version, individual, code]
+
+- table: asset_type
+  with:
+  - column: code
+    type: text
+  - identity: [code]
+
+- table: todo
+  with:
+  - link: study_enrollment
+    required: false
+  - link: individual
+  - column: code
+    type: integer
+  - identity: [individual, code]
+  - column: title
+    type: text
+    required: false
+  - column: status
+    type: ['incomplete', 'complete', 'skipped', 'failed']
+
+- table: measure
+  with:
+  - link: individual
+  - column: measure_type_revision
+    type: text
+  - column: code
+    type: integer  
+  - identity: [individual, measure_type_revision, code: offset]
+  - link: study
+  - column: date_of_evaluation
+    type: date
+    required: false
+  - column: age_at_evaluation
+    type: integer
+    required: false
+  - column: data_entry_status
+    type: [ 'not-started','in-process','completed','failed','skipped','processed']
+
+- table: sample_type
+  with:
+  - column: code
+    type: text
+  - identity: [code]
+  - column: title
+    type: text
+    required: false
+
+- table: sample
+  with:
+  - link: sample_type
+  - link: individual
+  - column: code
+    type: integer
+  - identity: [individual, sample_type, code: offset]
+
+- table: tube
+  with:
+  - link: sample
+  - column: code
+    type: integer
+  - identity: [sample, code: offset]
+  - column: volume_amount
+    type: decimal
+    required: false
+  - column: volume_unit
+    type: [ml, ul]
+    required: false
+  - column: concentration_amount
+    type: decimal
+    required: false
+  - column: concentration_unit
+    type: [ng-ul]
+    required: false
+  - column: location_memo
+    type: text
+    required: false

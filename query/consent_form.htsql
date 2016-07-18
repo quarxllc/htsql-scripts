@@ -1,0 +1,10 @@
+/individual.consent{
+
+            individual.code+'.'+consent_type.code+'.'+string(code): as consent, 
+            /individual{1}: as code, 
+            /individual{'2016-01-01'}: as date_signed, 
+            /consent_form.created_by,
+            /consent_form.date_modified,
+            /consent_form.scan
+        
+            }

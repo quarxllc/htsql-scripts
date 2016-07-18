@@ -1,0 +1,46 @@
+# Bring in some common structures.
+- include: mart/demographics_schema.yaml
+- include: mart/annotations_reference_schema.yaml
+
+
+# Start by making a stub table that will eventually house the Assessments. It
+# should include nothing but the primary key (RexMart will add all the other
+# fields by itself).
+- table: contact_info_form
+  with:
+    - link: individual
+    - column: assessment_uid
+      type: text
+    - identity:
+      - individual
+      - assessment_uid
+
+
+# Now create versions of the measure_annotation and measure_annotation_comment
+# tables that are children of our Assessment table rather than the original
+# measure table.
+- table: contact_info_form_annotation
+  with:
+    - link: contact_info_form
+    - link: user
+    - column: code
+      type: integer
+    - identity:
+        - contact_info_form
+        - user
+        - code
+    - link: measure_annotation_score
+      required: false
+    - column: datetime
+      type: datetime
+    - column: memo
+      type: text
+      required: false
+
+- table: contact_info_form_annotation_comment
+  with:
+  - link: contact_info_form_annotation
+  - link: measure_annotation_comment_type
+  - identity:
+      - contact_info_form_annotation
+      - measure_annotation_comment_type

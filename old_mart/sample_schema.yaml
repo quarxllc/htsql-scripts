@@ -1,0 +1,18 @@
+- table: sample_type
+  with:
+  - column: code
+    type: text
+  - identity: [code]
+  - column: title
+    type: text
+    required: false
+
+- table: sample
+  with:
+  - link: sample_type
+  - column: individual
+    type: text
+  - column: code
+    type: integer
+  - identity: [individual, sample_type, code: offset]
+

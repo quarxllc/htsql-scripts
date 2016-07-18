@@ -1,0 +1,11 @@
+/individual{
+        
+        consent.individual: as individual,
+        consent{exists(consent_form.scan) & exists(consent_todo_fulfillment.todo.consent_type_x_todo): as has_informed_consent},
+        study_enrollment{enrollment_date}: as enrollment_date,
+        consent.consent_form.scan,/consent.consent_form{date_modified}: as date_modified
+
+        }
+        : as consent
+        /: rexdb
+        /: merge

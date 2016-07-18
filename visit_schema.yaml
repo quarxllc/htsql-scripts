@@ -1,0 +1,8 @@
+- table: visit
+  with:
+    - column: visit_one
+      type: text
+    - column: visit_two
+      type: text
+    - column: visit_three
+      type: text

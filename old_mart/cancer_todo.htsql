@@ -1,0 +1,41 @@
+# Studies
+/study['cancer']
+    {
+        code,
+        title
+    }:as study/:rexdb/:merge
+
+/study_version?study='cancer'
+    {
+        study := study.id(),
+        version,
+        note
+    }:as study_version/:rexdb/:merge
+
+# Individual
+/individual
+    {
+        code,
+        sex
+    }:as individual/:rexdb/:merge
+
+/study_enrollment?study_version.study='cancer'
+    {
+        study_version := study_version.id(),
+        individual := individual.id(),
+        code
+    }:as study_enrollment/:rexdb/:merge
+
+
+# Todo
+/todo?study_enrollment.study_version.study='cancer'
+    {
+        study_enrollment := study_enrollment.id(),
+        individual := individual.id(),
+        code,
+        title,
+        status
+    }:as todo/:rexdb/:merge
+
+       
+    

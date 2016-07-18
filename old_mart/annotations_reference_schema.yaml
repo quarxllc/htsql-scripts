@@ -1,0 +1,23 @@
+- table: user
+  with:
+  - column: remote_user
+    type: text
+  - identity: [remote_user]
+
+- table: measure_annotation_score
+  with:
+  - column: code
+    type: text
+  - identity: [code]
+  - column: title
+    type: text
+
+- table: measure_annotation_comment_type
+  with:
+  - column: code
+    type: text
+  - identity: [code]
+  - column: title
+    type: text
+
+

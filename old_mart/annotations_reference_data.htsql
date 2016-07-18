@@ -1,0 +1,21 @@
+# Users
+/user
+    {
+        remote_user
+    }/:rexdb/:insert
+
+# Annotation Scores
+/measure_annotation_score
+    {
+        code,
+        title
+    }
+    /:rexdb/:insert
+
+# Annotation Comment Types
+/measure_annotation_comment_type
+    {
+        code,
+        title
+    }
+    /:rexdb/:insert

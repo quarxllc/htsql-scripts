@@ -1,0 +1,13 @@
+/sample_type
+    {
+        code := code,
+        title := title,
+    }/:rexdb/:merge
+
+/study_enrollment.filter(study_version.study='autism').individual.sample
+    {
+    sample_type:= sample_type.id(),
+    individual := individual.id(),
+    code
+    }/:rexdb/:merge
+
